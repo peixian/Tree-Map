@@ -6,7 +6,7 @@
          <title></title>
 		 <style type="text/css" media="screen">
 		 #mapid {
-			 height: 180px;
+			 height: 750px;
 		 }
 		 </style>
 		 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
@@ -17,15 +17,21 @@
 
 		 
      </body>
+
 	<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+	<script src="js/leaflet-heat.js"></script>
+	<script src="js/treeHeights.js"></script>
 	<script type="text/javascript">
-		var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+	
+		var mymap = L.map('mapid').setView([40.116421, -88.243385], 13);
 		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-		    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+		    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors & <a href="https://data.illinois.gov/Municipality/Trees-Owned-by-the-City-of-Champaign/dzge-uybj">Champaign Municipality</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
 		    maxZoom: 18,
 		    id: 'whorleater.jdapo55k',
 		    accessToken: 'pk.eyJ1Ijoid2hvcmxlYXRlciIsImEiOiJsSXNyWU0wIn0.qllPP36qV7rSnnGroiNgzg'
 		}).addTo(mymap);
+		var heat = L.heatLayer(addressPoints).addTo(mymap);
+		
 	</script>
 </html>
  
