@@ -19,4 +19,9 @@ data["Latitude"] = data.apply(lambda row: literal_eval(row["Location"])[0], axis
 data["Longitude"] = data.apply(lambda row: literal_eval(row["Location"])[1], axis=1)
 data.drop("Location", axis=1, inplace=True)
 
-writeTreeDiameter(data)
+treeGroups = data.groupby("Tree Species")
+print(sorted(data["Tree Species"].unique()))
+print(sorted(data["Location Type"].unique()))
+print(data[data["Location Type"] == None])
+# print(len(data["Common Name"].unique()))
+# print(data[data["Common Name"] == "Amur corktree"])

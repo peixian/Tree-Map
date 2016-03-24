@@ -5,13 +5,23 @@
          <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
          <title></title>
 		 <style type="text/css" media="screen">
-		 #mapid {
-			 height: 750px;
-		 }
+         body {
+             margin: 0px;
+             border: 0px;
+             padding: 0px;
+         }
+
+         #mapid {
+             background: rgba(0, 0, 0, 0);
+             height: 100%;
+             width: 100%;
+             position: absolute;
+         }
+    
 		 </style>
 		 <link rel="stylesheet" href="leaflet.css" />
      </head>
-	 
+	 <script type="text/javascript">window["_gaUserPrefs"] = { ioo : function() { return true; } }</script>
      <body>
 		  <div id="mapid"></div>
 
@@ -23,7 +33,7 @@
 	<script src="js/treeDiameter.js"></script>
 	<script type="text/javascript">
 	
-		var mymap = L.map('mapid').setView([40.116421, -88.243385], 13);
+		var mymap = L.map('mapid').setView([40.1020, -88.2272], 13);
 		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 		    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors & <a href="https://data.illinois.gov/Municipality/Trees-Owned-by-the-City-of-Champaign/dzge-uybj">Champaign Municipality</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
 		    maxZoom: 18,
