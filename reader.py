@@ -2,9 +2,9 @@ import pandas as pd
 import numpy as np
 from ast import literal_eval
 
-def writeTreeHeights(data):
-    """docstring for writeTreeHeights"""
-    with open("treeHeights.js", "w") as out:
+def writeTreeDiameter(data):
+    """writes the tree diameter to the treeDiameter.js file"""
+    with open("demo/js/treeDiameter.js", "w") as out:
         out.write("var addressPoints = [\n")
         for index, row in data.iterrows():
             out.write("[{},{},{}],\n".format(row["Latitude"], row["Longitude"], row["Diameter at Breast Height (in Feet)"]))
@@ -19,4 +19,4 @@ data["Latitude"] = data.apply(lambda row: literal_eval(row["Location"])[0], axis
 data["Longitude"] = data.apply(lambda row: literal_eval(row["Location"])[1], axis=1)
 data.drop("Location", axis=1, inplace=True)
 
-writeTreeHeights(data)
+writeTreeDiameter(data)
