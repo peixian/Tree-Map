@@ -15,7 +15,9 @@ def writeTreeDiameter(data):
 def writeTreeSpecies(data):
     """writes the tree species and count into species.csv"""
     species = data["Tree Species"].value_counts()
-    species.to_csv("data/species.csv")
+    with open("data/species.csv", "w") as out:
+        out.write("species,population\n")
+    species.to_csv("data/species.csv", mode="a")
 
 data = pd.read_csv("Trees_Owned_by_the_City_of_Champaign.csv")
 data["Diameter"] = (data["Diameter at Breast Height (in Feet)"] - data["Diameter at Breast Height (in Feet)"].min())/(data["Diameter at Breast Height (in Feet)"].max() - data["Diameter at Breast Height (in Feet)"].min())
@@ -29,7 +31,6 @@ data = data[data["Tree Species"] != "vacant site large"]
 data = data[data["Tree Species"] != "vacant site medium"]
 #fix stump capitization
 data.loc[data["Tree Species"] == "stump", ["Tree Species"]] = "Stump"
-print(data[data["Tree Species"] == "Stump"])
 
 treeGroups = data.groupby("Tree Species")
 # print(sorted(data["Tree Species"].unique()))
