@@ -5,34 +5,33 @@
 <div id="treeSpeciesPie" style="width: 100%; height: 500px; overflow: 0px;"></div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="https://cdn.rawgit.com/peixian/Tree-Map/76ecc90c32b45893f462a844a7d8a3ec23671196/graphs/d3pie.min.js"></script>
-<script type="text/javascript">
-d3.csv("https://cdn.rawgit.com/peixian/Tree-Map/76ecc90c32b45893f462a844a7d8a3ec23671196/data/species.csv", function(d) {
-	return {
-		label: d.species,
-		value: +d.population
-	};
-}, function(error, species) {
-	var pie = new d3pie("treeSpeciesPie", {
-		header: {
-			title: {
-				text: "Tree Species"
+<script>
+	d3.csv("https://cdn.rawgit.com/peixian/Tree-Map/76ecc90c32b45893f462a844a7d8a3ec23671196/data/species.csv", function(d) {
+		return {
+			label: d.species,
+			value: +d.population
+		};
+	}, function(error, species) {
+		var pie = new d3pie("treeSpeciesPie", {
+			header: {
+				title: {
+					text: "Tree Species"
+				},
+				location: "pie-center"
 			},
-			location: "pie-center"
-		},
-		size: {
-			pieInnerRadius: "80%"
-		},
-		data: {
-			sortOrder: "value-desc",
-			smallSegmentGrouping: {
-				enabled:true,
-				value: 2,
-				valueType: "percentage",
-				label: "Other Trees"
+			size: {
+				pieInnerRadius: "80%"
 			},
-			content: species
-		}
+			data: {
+				sortOrder: "value-desc",
+				smallSegmentGrouping: {
+					enabled:true,
+					value: 2,
+					valueType: "percentage",
+					label: "Other Trees"
+				},
+				content: species
+			}
+		});
 	});
-});
-	
 </script>
